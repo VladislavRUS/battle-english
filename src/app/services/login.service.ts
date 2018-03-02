@@ -5,7 +5,7 @@ import { catchError } from 'rxjs/operators';
 @Injectable()
 export class LoginService {
 
-    private loggedIn = true;
+    private loggedIn = false;
 
     constructor(private httpClient: HttpClient) { }
     
