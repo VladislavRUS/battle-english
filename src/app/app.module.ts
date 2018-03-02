@@ -6,18 +6,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LandingLoginComponent } from './components/landing-login/landing-login.component';
 import { LoginService } from './services/login.service';
+import { GamesComponent } from './components/games/games.component';
+import { HeaderComponent } from './components/header/header.component';
 
 const appRoutes: Routes = [
   {
-    path: 'login', component: LandingLoginComponent
-  }, {
-    path: '',redirectTo: '/login',pathMatch: 'full'
+    path: 'games', component: GamesComponent
+  },
+  {
+    path: '', redirectTo: '/games', pathMatch: 'full'
   }
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
+    GamesComponent,
+    HeaderComponent,
     LandingLoginComponent
   ],
   imports: [
