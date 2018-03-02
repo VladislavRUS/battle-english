@@ -1,0 +1,30 @@
+@mixin font-face($file-name, $font-family, $font-weight: 400) {
+    @font-face {
+        font-family: "#{$font-family}";
+        src: url("/assets/styles/fonts/#{$file-name}.woff") format('woff');
+        font-weight: $font-weight;
+        font-style: normal;
+    }
+}
+
+@include font-face(AvenirNextCyr-Regular, AvenirNextCyr, 300);
+@include font-face(AvenirNextCyr-Medium, AvenirNextCyr, 400);
+@include font-face(AvenirNextCyr-Bold, AvenirNextCyr, 700);
+
+@mixin font-light() {
+    font-family: AvenirNextCyr, sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+@mixin font-regular() {
+    font-family: AvenirNextCyr, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+@mixin font-bold() {
+    font-family: AvenirNextCyr, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
