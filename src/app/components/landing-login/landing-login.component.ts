@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'landing-login',
@@ -7,14 +8,14 @@ import { LoginService } from '../../services/login.service';
 })
 export class LandingLoginComponent implements OnInit {
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
   }
 
   onClick(): void {
-    // this.loginService.loggedIn = true;
-    this.loginService.initVkAuth();
+    this.loginService.initVkAuth().then(() => {
+      this.router.navigateByUrl['/games'];
+    });
   }
-
 }

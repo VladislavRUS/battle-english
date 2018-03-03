@@ -43,6 +43,14 @@ export class LoginService {
         });
     }
 
+    logoutVk(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            VK.Auth.logout(resp => {
+                this.loggedIn = false;
+            });
+        });
+    }
+
     isLoggedIn(): boolean {
         return this.loggedIn;
     }

@@ -37,13 +37,12 @@ export class GamesComponent implements OnInit {
       },
       {
         number: '03',
-        title: '4 картинки 1 слово',
-        class: '_four-images-one-word',
+        title: 'Алиас',
+        class: '_alias',
         description: 
-        `Есть одно слово, которое связывает \n
-        4 картинки. Что это за слово? Поиграй \n
-        и пойми, почему все любят эту игру`,
-        online: Math.floor(Math.random() * 1000)
+        `Нужно постараться, чтобы ваши товарищи угадали слово, которое выпало вам. Но, главное, не называть это слово!`,
+        online: Math.floor(Math.random() * 1000),
+        url: '/alias'
       },
       {
         number: '04',

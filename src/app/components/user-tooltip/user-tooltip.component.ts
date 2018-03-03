@@ -14,5 +14,6 @@ export class UserTooltipComponent implements OnInit {
 
     logout(): void {
         this.tooltipService.closeTooltip();
+        this.loginService.logoutVk();
     }
 }
