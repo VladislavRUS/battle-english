@@ -85,112 +85,113 @@
         color: white;    
         @include font-regular();
     }
-}
 
-.main-content {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 70px;
-
-    &__total-results {
-        min-width: 300px;
-    }
-
-    &__detail-statistics {
-        min-width: 500px;
-    }
-}
-
-.results {
-    display: flex;
-    justify-content: space-between;
-}
-
-.result {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    &__count {
-        width: 78px;
-        height: 38px;
-        background: white;
-        margin-bottom: 15px;
-        border-radius: 10px;
-        line-height: 38px;
-        text-align: center;
-        font-size: 21px;
-        @include font-regular();
-        @include border-bottom(3px, $light-grey);
-
-        &_total {
-            color: $neutral-color;
-        }
-        &_win {
-            color: $win-color;
-        }
-        &_lose {
-            color: $lose-color;
-        }
-    }
-
-    &__text {
-        font-size: 15px;
-        color: white;    
-        @include font-regular();
-    }
-}
-
-.detail-statistics {
-    width: 500px;
-    height: 230px;
-    padding: 25px;
-    background: white;
-    border-radius: 25px;
-    @include border-bottom(7px, $light-grey);
-
-    &__game {
-        line-height: 25px;
-    }
-    &__win, &__lose {
-        text-align: center;
-        line-height: 25px;
-    }
-
-    &__game {
-        width: 50%;
-    }
-    &__win {
-        width: 25%;
-
-        &._max {
-            font-size: 21px;
-            color: $win-color;
-        }
-    }
-    &__lose {
-        width: 25%;
-
-        &._max {
-            font-size: 21px;
-            color: $lose-color;
-        }
-    }
-
-    &__row {
+    .main-content {
         display: flex;
         justify-content: space-between;
-
-        &_title {
-            font-size: 17px;
-            color: $primary-orange;    
-            @include font-bold();
+        margin-bottom: 70px;
+    
+        &__total-results {
+            min-width: 300px;
         }
-
-        &:not(&_title) {
-            font-size: 14px;
-            color: $gray-font-color;  
+    
+        &__detail-statistics {
+            min-width: 500px;
+        }
+    }
+    
+    .results {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .result {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+        &__count {
+            width: 78px;
+            height: 38px;
+            background: white;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            line-height: 38px;
+            text-align: center;
+            font-size: 21px;
+            @include font-regular();
+            @include border-bottom(3px, $light-grey);
+    
+            &_total {
+                color: $neutral-color;
+            }
+            &_win {
+                color: $win-color;
+            }
+            &_lose {
+                color: $lose-color;
+            }
+        }
+    
+        &__text {
+            font-size: 15px;
+            color: white;    
             @include font-regular();
         }
     }
+    
+    .detail-statistics {
+        width: 500px;
+        height: 230px;
+        padding: 25px;
+        background: white;
+        border-radius: 25px;
+        @include border-bottom(7px, $light-grey);
+    
+        &__game {
+            line-height: 25px;
+        }
+        &__win, &__lose {
+            text-align: center;
+            line-height: 25px;
+        }
+    
+        &__game {
+            width: 50%;
+        }
+        &__win {
+            width: 25%;
+    
+            &._max {
+                font-size: 21px;
+                color: $win-color;
+            }
+        }
+        &__lose {
+            width: 25%;
+    
+            &._max {
+                font-size: 21px;
+                color: $lose-color;
+            }
+        }
+    
+        &__row {
+            display: flex;
+            justify-content: space-between;
+    
+            &_title {
+                font-size: 17px;
+                color: $primary-orange;    
+                @include font-bold();
+            }
+    
+            &:not(&_title) {
+                font-size: 14px;
+                color: $gray-font-color;  
+                @include font-regular();
+            }
+        }
+    }
 }
+

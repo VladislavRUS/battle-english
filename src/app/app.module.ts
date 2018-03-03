@@ -10,6 +10,7 @@ import { GamesComponent } from './components/games/games.component';
 import { HeaderComponent } from './components/header/header.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { BlockheadComponent } from './components/blockhead/blockhead.component';
+import { OpponentsComponent } from './components/opponents/opponents.component';
 
 const appRoutes: Routes = [
   {
@@ -17,6 +18,9 @@ const appRoutes: Routes = [
   },
   {
     path: 'statistics', component: StatisticsComponent
+  },
+  {
+    path: 'opponents', component: OpponentsComponent
   },
   {
     path: 'blockhead', component: BlockheadComponent
@@ -33,7 +37,8 @@ const appRoutes: Routes = [
     GamesComponent,
     HeaderComponent,
     LandingLoginComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    OpponentsComponent
   ],
   imports: [
     BrowserModule,
