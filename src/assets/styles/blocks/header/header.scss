@@ -32,6 +32,21 @@
         max-width: 25px;
     }
 
+    &__notifications-count {
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: $primary-red;
+        color: white;
+        line-height: 16px;
+        text-align: center;
+        font-size: 12px;
+        @include font-regular();
+    }
+
     &__user {
         position: relative;
         display: flex;

@@ -6,10 +6,11 @@
     <div class="header__menu">
       <div class="header__bell">
         <img src="/assets/styles/images/bell.png" alt="">
+        <div class="header__notifications-count">1</div>
       </div>
       <div class="header__user" (click)="openUserTooltip(userTooltip)" >
         <div class="header__user-avatar">
-          <img src="https://pp.userapi.com/c639619/v639619504/2f574/nua37r6QCP4.jpg" alt="">
+          <img src={{loginService.user.photo_50}} alt="">
         </div>
         <div class="header__user-name">{{loginService.user.first_name}} {{loginService.user.last_name}}</div>
         <div class="header__user-triangle" [ngClass]="{'_opened': isTooltipOpened()}" #userTooltip></div>
