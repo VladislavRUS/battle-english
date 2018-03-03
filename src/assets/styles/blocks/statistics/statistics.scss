@@ -30,9 +30,27 @@
         max-width: 45px;
     }
 
-    &__main-content {
+    &__action {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
+    }
+
+    &__button {
+        @include font-regular();
+        font-size: 21px;
+        color: white;
+        background-color: $primary-red;
+        padding: 10px 25px;
+        border: none;
+        outline: none;
+        border-radius: 13px;
+        box-shadow: 0 3px 0px 0px $dark-red;
+        transition: background-color .2s ease;
+        cursor: pointer;
+
+        &:hover {
+            background: $dark-red;
+        }
     }
 }
 
@@ -70,12 +88,22 @@
 }
 
 .main-content {
-    min-width: 300px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 60px;
+
+    &__total-results {
+        min-width: 300px;
+    }
 
     &__detail-statistics {
-        display: flex;
-        justify-content: space-between;
+        min-width: 500px;
     }
+}
+
+.results {
+    display: flex;
+    justify-content: space-between;
 }
 
 .result {
@@ -94,7 +122,7 @@
         font-size: 21px;
         @include font-regular();
         @include border-bottom(3px, $light-grey);
-/*
+
         &_total {
             color: $neutral-color;
         }
@@ -103,12 +131,56 @@
         }
         &_lose {
             color: $lose-color;
-        }*/
+        }
     }
 
     &__text {
         font-size: 15px;
         color: white;    
         @include font-regular();
+    }
+}
+
+.detail-statistics {
+    width: 500px;
+    height: 230px;
+    padding: 25px;
+    background: white;
+    border-radius: 25px;
+    @include border-bottom(7px, $light-grey);
+
+    &__game {
+        line-height: 25px;
+    }
+    &__win, &__lose {
+        text-align: center;
+        line-height: 25px;
+    }
+
+    &__game {
+        width: 50%;
+    }
+    &__win {
+        width: 25%;
+    }
+    &__lose {
+        width: 25%;
+    }
+
+    &__row {
+        display: flex;
+        justify-content: space-between;
+
+        &_title {
+            font-size: 17px;
+            color: $primary-orange;    
+            @include font-bold();
+        }
+
+        &:not(&_title) {
+            font-size: 14px;
+            color: $gray-font-color;  
+            @include font-regular();
+        }
     }
 }
