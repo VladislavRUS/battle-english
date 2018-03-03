@@ -8,6 +8,7 @@ import { LandingLoginComponent } from './components/landing-login/landing-login.
 import { LoginService } from './services/login.service';
 import { GamesComponent } from './components/games/games.component';
 import { HeaderComponent } from './components/header/header.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
 
 const appRoutes: Routes = [
   {
@@ -23,7 +24,8 @@ const appRoutes: Routes = [
     AppComponent,
     GamesComponent,
     HeaderComponent,
-    LandingLoginComponent
+    LandingLoginComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,
