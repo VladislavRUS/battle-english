@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-games',
@@ -8,7 +9,7 @@ export class GamesComponent implements OnInit {
 
   private games: any[];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.games = [
@@ -20,7 +21,8 @@ export class GamesComponent implements OnInit {
         `Лингвистическая настольная игра \n 
         для 2-4 игроков, в которой необходимо \n
         составлять слова с помощью букв`,
-        online: Math.floor(Math.random() * 1000)
+        online: Math.floor(Math.random() * 1000),
+        url: '/blockhead'
       },
       {
         number: '02',
@@ -75,5 +77,4 @@ export class GamesComponent implements OnInit {
       }
     ]
   }
-
 }
