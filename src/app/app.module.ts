@@ -9,6 +9,7 @@ import { LoginService } from './services/login.service';
 import { GamesComponent } from './components/games/games.component';
 import { HeaderComponent } from './components/header/header.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
+import { BlockheadComponent } from './components/blockhead/blockhead.component';
 
 const appRoutes: Routes = [
   {
@@ -18,6 +19,9 @@ const appRoutes: Routes = [
     path: 'statistics', component: StatisticsComponent
   },
   {
+    path: 'blockhead', component: BlockheadComponent
+  },
+  {
     path: '', redirectTo: '/games', pathMatch: 'full'
   }
 ]
@@ -25,6 +29,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    BlockheadComponent,
     GamesComponent,
     HeaderComponent,
     LandingLoginComponent,

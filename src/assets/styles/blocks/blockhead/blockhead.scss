@@ -1,0 +1,119 @@
+.blockhead {
+    height: 100%;
+    background-color: #FAB22C;
+
+    &__wrapper {
+        max-width: 950px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title {
+        position: relative;
+        color: white;
+        @include font-bold();
+        font-size: 34px;
+        margin: 75px auto 0 auto;
+    }
+
+    &__game {
+
+    }
+
+    &__info {
+        position: relative;
+        top: -12px;
+        display: flex;
+        flex-direction: column;
+        max-width: 300px;
+    }
+
+    &__user {
+        display: flex;
+        align-items: center;
+        margin-bottom: 13px;
+
+        &-logo {
+            padding: 3px;
+            margin-right: 20px;
+            background-color: white;
+            border-radius: 50%;
+            max-height: 50px;
+            max-width: 50px;
+            & img {
+                border-radius: 50%;
+            }
+        }
+
+        &-name {
+            max-width: 100px;
+            color: white;
+            @include font-light();
+            line-height: 1.4;
+        }
+    }
+
+    &__words {
+        background-color: white;
+        max-width: 192px;
+        padding: 13px 23px;
+        @include border-bottom(6px, $light-grey);
+        min-height: 220px;
+        margin-bottom: 20px;
+
+        &-item {
+            display: flex;
+            line-height: 1.4;
+            color: $dark-grey;
+            align-items: center;
+
+            &-value {
+                margin-right: 5px;
+                font-size: 16px;
+                @include font-bold();
+            }
+
+            &-translation {
+                font-size: 13px;
+                @include font-light();
+            }
+        }
+    }
+
+    &__score {
+        display: flex;
+        color: white;
+        margin-bottom: 20px;
+
+        &-text {
+            @include font-bold();
+            font-size: 16px;
+            letter-spacing: 0.05em;
+
+        }
+
+        &-value {
+            @include font-light();
+        }
+    }
+
+    &__actions {
+
+        &-miss {
+            display: inline-block;
+            padding: 10px;
+            background-color: $primary-orangered;
+            @include border-bottom(6px, $dark-orangered);
+            color: white;
+            @include font-light();
+            font-size: 12px;
+            border-radius: 13px;
+        }
+
+        &-giveup {
+
+        }
+
+    }
+}

@@ -23,8 +23,8 @@
             {{game.description}}
           </div>
           <div class="games__game-toolbar">
-            <div class="games__game-toolbar-play" [ngClass]="game.class">Играть</div>
-            <div class="games__game-toolbar-online">{{game.online}}</div>
+            <div class="games__game-toolbar-play" [ngClass]="game.class" routerLink="/{{game.url}}">Играть</div>
+            <div class="games__game-toolbar-online">{{game.online}} Online</div>
           </div>
         </div>
       </div>

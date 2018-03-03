@@ -1,6 +1,6 @@
 .games {
     height: 100%;
-    background-color: #FAB22C;
+    background-color: $primary-orange;
 
     &__wrapper {
         max-width: 950px;
@@ -123,6 +123,7 @@
                 box-shadow: 0 2px 0px 0px #C18120;
                 transition: background-color .2s ease;
                 cursor: pointer;
+                outline: none;
 
                 &._blockhead {
                     background-color: $primary-orange;
