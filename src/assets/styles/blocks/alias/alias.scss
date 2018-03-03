@@ -1,0 +1,261 @@
+.alias {
+    height: 100%;
+    background-color: #FAB22C;
+
+    &__wrapper {
+        max-width: 950px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        padding-top: 100px;
+    }
+
+    &__waiting {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 150px;
+
+        &-text {
+            width: 470px;
+            font-size: 36px;
+            color: white;
+            @include font-bold();
+        }
+    }
+
+    &__descriptions {
+        position: relative;
+        top: -3px;
+        padding: 10px;
+        font-size: 16px;
+        @include font-regular();
+        color: $gray-font-color;
+        resize: none;
+        max-height: 226px;
+    }
+
+    &__title {
+        position: relative;
+        color: white;
+        @include font-bold();
+        font-size: 34px;
+        margin: 75px auto 0 auto;
+    }
+
+    &__game {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__info {
+        position: relative;
+        top: -12px;
+        display: flex;
+        flex-direction: column;
+        max-width: 300px;
+    }
+
+    &__user {
+        display: flex;
+        align-items: center;
+        margin-bottom: 13px;
+
+        &._left {
+            justify-content: flex-start;
+        }
+
+        &._right {
+            justify-content: flex-end;
+        }
+
+        &-logo {
+            padding: 3px;
+            margin-right: 20px;
+            background-color: white;
+            border-radius: 50%;
+            max-height: 50px;
+            max-width: 50px;
+            & img {
+                border-radius: 50%;
+            }
+        }
+
+        &-name {
+            max-width: 100px;
+            color: white;
+            @include font-light();
+            line-height: 1.4;
+        }
+    }
+
+    &__words {
+        background-color: white;
+        max-width: 192px;
+        padding: 13px 23px;
+        @include border-bottom(6px, $light-grey);
+        min-height: 220px;
+        margin-bottom: 20px;
+        min-width: 195px;
+
+        &._right {
+            align-self: flex-end;
+        }
+
+        &-item {
+            display: flex;
+            line-height: 1.4;
+            color: $dark-grey;
+            align-items: center;
+
+            &-value {
+                margin-right: 5px;
+                font-size: 16px;
+                @include font-bold();
+            }
+
+            &-translation {
+                font-size: 13px;
+                @include font-light();
+            }
+        }
+    }
+
+    &__score {
+        display: flex;
+        color: white;
+        margin-bottom: 25px;
+        &._right {
+            justify-content: flex-end;
+        }
+        &-text {
+            @include font-bold();
+            font-size: 16px;
+            letter-spacing: 0.05em;
+
+        }
+
+        &-value {
+            @include font-light();
+        }
+    }
+
+    &__time-remained {
+        margin-bottom: 20px;
+        color: $lose-color;
+        @include font-bold();
+        font-size: 34px;
+        text-align: center;
+    }
+
+    &__word {
+        margin-bottom: 20px;
+
+        &-describe {
+            min-height: 135px;
+            padding: 60px 70px;
+            text-align: center;
+            color: $lose-color;
+            @include font-bold();
+            font-size: 34px;
+            background-color: white;
+        }
+    }
+
+
+    &__input {
+        padding: 5px 10px;
+        font-size: 16px;
+        width: 100%;
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        &-btn {
+            display: inline-block;
+            padding: 5px 15px;
+            color: white;
+            @include font-light();
+            font-size: 12px;
+            border-radius: 13px;
+            margin-bottom: 15px;
+            cursor: pointer;
+
+            &._send {
+                display: block;
+                text-align: center;
+                background-color: $lose-color;
+                @include border-bottom(4px, $dark-red);
+                transition: background-color .2s ease;
+                margin: 10px 0;
+
+                &:hover {
+                    background-color: $dark-red;
+                }
+            }
+
+            &._miss {
+                background-color: $lose-color;
+                @include border-bottom(4px, $dark-red);
+                transition: background-color .2s ease;
+
+                &:hover {
+                    background-color: $dark-red;
+                }
+            }
+    
+            &._giveup {
+                background-color: $dark-grey;
+                @include border-bottom(4px, $darker-grey);
+                transition: background-color .2s ease;
+                
+                &:hover {
+                    background-color: $darker-grey;
+                }
+            }
+
+            &._watch-statistics {
+                align-self: flex-end;
+                background-color: $dark-grey;
+                @include border-bottom(4px, $darker-grey);
+                transition: background-color .2s ease;
+                
+                &:hover {
+                    background-color: $darker-grey;
+                }
+            }
+        }
+    }
+}
+
+table {
+    table-layout: fixed;
+    position: relative;
+    top: 50px;
+}
+
+td {
+    
+    & div {
+        margin: 2px;
+        width: 55px;
+        height: 55px;
+        text-align: center;
+        color: $lose-color;
+        @include font-bold();
+        font-size: 34px;
+        background-color: white;
+        border-radius: 10px;    
+        line-height: 55px;
+        transition: background-color .2s ease;
+        cursor: pointer;
+
+        &:not(._busy):hover {
+            background-color: #fed4d6;
+        }
+    }
+}

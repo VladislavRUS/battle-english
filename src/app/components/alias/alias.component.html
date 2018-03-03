@@ -1,0 +1,54 @@
+<div class="alias">
+  <div class="alias__wrapper">
+    <div class="alias__waiting" *ngIf="!started; else game">
+      <div class="alias__waiting-text">
+        {{waitingMessage}}
+      </div>
+    </div>
+    <ng-template #game>
+      <div class="alias__game">
+        <div class="alias__info">
+          <div class="alias__user _left">
+            <div class="alias__user-logo">
+              <img src="https://pp.userapi.com/c639619/v639619504/2f574/nua37r6QCP4.jpg">
+            </div>
+            <div class="alias__user-name">Курочкин Владислав</div>
+          </div>
+
+          <div class="alias__words">
+            <div class="alias__words-item" *ngFor="let word of guessedWords">
+              <div class="alias__words-item-value">{{word.value}}</div>
+              <div class="alias__words-item-translation">{{word.translation}}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="alias__game-field">
+          <div class="alias__time-remained">{{timeRemained}}</div>
+          <div class="alias__word">
+            <div class="alias__word-describe" *ngIf="turn; else guess">{{wordDescribe}}</div>
+            <textarea readonly="true" class="alias__descriptions" resize="false" id="" cols="30" rows="10" *ngIf="!turn" [ngModel]="description"></textarea>
+          </div>
+          <input type="text" class="alias__input" [(ngModel)]="inputData">
+          <div class="alias__actions-btn _send" (click)="send()">Отправить</div>
+        </div>
+
+        <div class="alias__info">
+          <div class="alias__user _right">
+            <div class="alias__user-name">Андросова Татьяна</div>
+            <div class="alias__user-logo">
+              <img src="https://pp.userapi.com/c621707/v621707411/384ca/a1Nf_PM17_U.jpg">
+            </div>
+          </div>
+
+          <div class="alias__words _right">
+            <div class="alias__words-item" *ngFor="let word of words">
+              <div class="alias__words-item-value">{{word.value}}</div>
+              <div class="alias__words-item-translation">{{word.translation}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

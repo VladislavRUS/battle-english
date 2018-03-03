@@ -19,5 +19,4 @@ export class LandingLoginComponent implements OnInit {
       this.router.navigateByUrl('/games');
     });
   }
-
 }

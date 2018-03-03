@@ -73,7 +73,7 @@
                     background-color: $primary-blue;
                 }
                 
-                &._four-images-one-word {
+                &._alias {
                     background-color: $primary-orangered;
                 }
                 
@@ -142,7 +142,7 @@
                     }
                 }
                 
-                &._four-images-one-word {
+                &._alias {
                     background-color: $primary-orangered;
                     @include border-bottom(3px, $dark-orangered);
 

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { LandingLoginComponent } from './components/landing-login/landing-login.component';
@@ -15,6 +16,8 @@ import { DynamicContentComponent } from './components/dynamic-content/dynamic-co
 import { TooltipComponent } from './components/tooltip/tooltip.component';
 import { TooltipService } from './services/tooltip.service';
 import { UserTooltipComponent } from './components/user-tooltip/user-tooltip.component';
+import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+import { AliasComponent } from './components/alias/alias.component';
 
 const appRoutes: Routes = [
   {
@@ -30,9 +33,14 @@ const appRoutes: Routes = [
     path: 'blockhead', component: BlockheadComponent
   },
   {
+    path: 'alias', component: AliasComponent
+  },
+  {
     path: '', redirectTo: '/games', pathMatch: 'full'
   }
 ];
+
+const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
 
 @NgModule({
   declarations: [
@@ -45,12 +53,15 @@ const appRoutes: Routes = [
     OpponentsComponent,
     DynamicContentComponent,
     TooltipComponent,
-    UserTooltipComponent
+    UserTooltipComponent,
+    AliasComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes, { useHash: true }),
+    SocketIoModule.forRoot(config),
+    FormsModule 
   ],
   providers: [
     LoginService,
