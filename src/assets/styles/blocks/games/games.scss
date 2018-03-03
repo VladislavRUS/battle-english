@@ -65,6 +65,30 @@
                 background-color: #FAB22C;
                 color: white;
                 border-radius: 10px;
+
+                &._blockhead {
+                    background-color: $primary-orange;
+                }
+                
+                &._quizplease {
+                    background-color: $primary-blue;
+                }
+                
+                &._four-images-one-word {
+                    background-color: $primary-orangered;
+                }
+                
+                &._brain-battle {
+                    background-color: $primary-green;
+                }
+                
+                &._yes-or-no {
+                    background-color: $primary-red;
+                }
+                
+                &._where-is-logic {
+                    background-color: $primary-violet;
+                }
             }
 
             &-title {
@@ -100,10 +124,59 @@
                 transition: background-color .2s ease;
                 cursor: pointer;
 
-                &:hover {
-                    background-color: #C18120;
-                }
+                &._blockhead {
+                    background-color: $primary-orange;
+                    @include border-bottom(3px, $dark-orange);
 
+                    &:hover {
+                        background-color: $dark-orange;
+                    }
+                }
+                
+                &._quizplease {
+                    background-color: $primary-blue;
+                    @include border-bottom(3px, $dark-blue);
+
+                    &:hover {
+                        background-color: $dark-blue;
+                    }
+                }
+                
+                &._four-images-one-word {
+                    background-color: $primary-orangered;
+                    @include border-bottom(3px, $dark-orangered);
+
+                    &:hover {
+                        background-color: $dark-orangered;
+                    }
+                }
+                
+                &._brain-battle {
+                    background-color: $primary-green;
+                    @include border-bottom(3px, $dark-green);
+
+                    &:hover {
+                        background-color: $dark-green;
+                    }
+                }
+                
+                &._yes-or-no {
+                    background-color: $primary-red;
+                    @include border-bottom(3px, $dark-red);
+
+                    &:hover {
+                        background-color: $dark-red;
+                    }
+                }
+                
+                &._where-is-logic {
+                    background-color: $primary-violet;
+                    @include border-bottom(3px, $dark-violet);
+
+                    &:hover {
+                        background-color: $dark-violet;
+                    }
+                }
             }
 
             &-online {

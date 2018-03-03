@@ -9,33 +9,25 @@
       </div>
     </div>
     <div class="games__list">
-      <div class="games__list-item">
+      <div class="games__list-item" *ngFor="let game of games">
         <div class="games__game">
           <div class="games__game-header">
-            <div class="games__game-header-number">
-              01
+            <div class="games__game-header-number" [ngClass]="game.class">
+              {{game.number}}
             </div>
             <div class="games__game-header-title">
-              Балда
+              {{game.title}}
             </div>
           </div>
           <div class="games__game-content">
-            Лингвистическая настольная игра <br>
-            для 2 - 4 игроков, в которой необходимо <br>
-            составлять слова с помощью букв
+            {{game.description}}
           </div>
           <div class="games__game-toolbar">
-            <div class="games__game-toolbar-play">Играть</div>
-            <div class="games__game-toolbar-online">240 Online</div>
+            <div class="games__game-toolbar-play" [ngClass]="game.class">Играть</div>
+            <div class="games__game-toolbar-online">{{game.online}}</div>
           </div>
         </div>
-
       </div>
-      <div class="games__list-item"></div>
-      <div class="games__list-item"></div>
-      <div class="games__list-item"></div>
-      <div class="games__list-item"></div>
-      <div class="games__list-item"></div>
     </div>
   </div>
 </div>
