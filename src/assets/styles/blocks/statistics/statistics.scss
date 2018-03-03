@@ -40,6 +40,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 30px;
     
     &__avatar {
         position: relative;
@@ -68,11 +69,42 @@
     }
 }
 
-.main-content__detail-statistics {
-    
+.main-content {
+    min-width: 300px;
+
+    &__detail-statistics {
+        display: flex;
+        justify-content: space-between;
+    }
 }
 
 .result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__count {
+        width: 78px;
+        height: 38px;
+        background: white;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        line-height: 38px;
+        text-align: center;
+        font-size: 21px;
+        @include font-regular();
+        @include border-bottom(3px, $light-grey);
+/*
+        &_total {
+            color: $neutral-color;
+        }
+        &_win {
+            color: $win-color;
+        }
+        &_lose {
+            color: $lose-color;
+        }*/
+    }
 
     &__text {
         font-size: 15px;
