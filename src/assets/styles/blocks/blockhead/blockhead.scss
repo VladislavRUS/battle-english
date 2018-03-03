@@ -18,7 +18,8 @@
     }
 
     &__game {
-
+        display: flex;
+        justify-content: space-between;
     }
 
     &__info {
@@ -33,6 +34,14 @@
         display: flex;
         align-items: center;
         margin-bottom: 13px;
+
+        &._left {
+            justify-content: flex-start;
+        }
+
+        &._right {
+            justify-content: flex-end;
+        }
 
         &-logo {
             padding: 3px;
@@ -61,6 +70,11 @@
         @include border-bottom(6px, $light-grey);
         min-height: 220px;
         margin-bottom: 20px;
+        min-width: 195px;
+
+        &._right {
+            align-self: flex-end;
+        }
 
         &-item {
             display: flex;
@@ -84,8 +98,10 @@
     &__score {
         display: flex;
         color: white;
-        margin-bottom: 20px;
-
+        margin-bottom: 25px;
+        &._right {
+            justify-content: flex-end;
+        }
         &-text {
             @include font-bold();
             font-size: 16px;
@@ -99,21 +115,78 @@
     }
 
     &__actions {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
 
-        &-miss {
+        &-btn {
             display: inline-block;
-            padding: 10px;
-            background-color: $primary-orangered;
-            @include border-bottom(6px, $dark-orangered);
+            padding: 5px 15px;
             color: white;
             @include font-light();
             font-size: 12px;
             border-radius: 13px;
+            margin-bottom: 15px;
+            cursor: pointer;
+
+            &._miss {
+                background-color: $lose-color;
+                @include border-bottom(4px, $dark-red);
+                transition: background-color .2s ease;
+
+                &:hover {
+                    background-color: $dark-red;
+                }
+            }
+    
+            &._giveup {
+                background-color: $dark-grey;
+                @include border-bottom(4px, $darker-grey);
+                transition: background-color .2s ease;
+                
+                &:hover {
+                    background-color: $darker-grey;
+                }
+            }
+
+            &._watch-statistics {
+                align-self: flex-end;
+                background-color: $dark-grey;
+                @include border-bottom(4px, $darker-grey);
+                transition: background-color .2s ease;
+                
+                &:hover {
+                    background-color: $darker-grey;
+                }
+            }
         }
+    }
+}
 
-        &-giveup {
+table {
+    table-layout: fixed;
+    position: relative;
+    top: 50px;
+}
 
+td {
+    
+    & div {
+        margin: 2px;
+        width: 55px;
+        height: 55px;
+        text-align: center;
+        color: $lose-color;
+        @include font-bold();
+        font-size: 34px;
+        background-color: white;
+        border-radius: 10px;    
+        line-height: 55px;
+        transition: background-color .2s ease;
+        cursor: pointer;
+
+        &:not(._busy):hover {
+            background-color: #fed4d6;
         }
-
     }
 }
