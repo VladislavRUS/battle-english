@@ -20,7 +20,7 @@
     "styles": [
       "./assets/styles/main.scss"
     ],
-    "scripts": [],
+    "scripts": ["assets/scripts/openapi.js"],
     "environmentSource": "environments/environment.ts",
     "environments": {
       "dev": "environments/environment.ts",

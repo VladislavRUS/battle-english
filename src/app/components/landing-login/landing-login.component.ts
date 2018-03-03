@@ -13,7 +13,8 @@ export class LandingLoginComponent implements OnInit {
   }
 
   onClick(): void {
-    this.loginService.loggedIn = true;
+    // this.loginService.loggedIn = true;
+    this.loginService.initVkAuth();
   }
 
 }
