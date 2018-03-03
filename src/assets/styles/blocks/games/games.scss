@@ -185,6 +185,30 @@
                 font-size: 10px;
                 color: #FAB22C;
                 margin-right: 10px;
+
+                &._blockhead {
+                    color: $primary-orange;
+                }
+                
+                &._quizplease {
+                    color: $primary-blue;
+                }
+                
+                &._four-images-one-word {
+                    color: $primary-orangered;
+                }
+                
+                &._brain-battle {
+                    color: $primary-green;
+                }
+                
+                &._yes-or-no {
+                    color: $primary-red;
+                }
+                
+                &._where-is-logic {
+                    color: $primary-violet;
+                }
             }
         }
     }
