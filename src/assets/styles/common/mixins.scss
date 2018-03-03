@@ -1,3 +1,3 @@
-@mixin border-bottom-grey {
-    box-shadow: 0 6px 0px 0px #D6D6D6;
+@mixin border-bottom($height, $color) {
+  box-shadow: 0 $height 0px 0px $color;
 }

@@ -42,7 +42,7 @@
             height: 185px;
             background-color: white;
             border-radius: 13px;
-            @include border-bottom-grey;
+            @include border-bottom(6px, $light-grey);
         }
     }
 
