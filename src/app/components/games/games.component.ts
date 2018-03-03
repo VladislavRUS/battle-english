@@ -22,7 +22,7 @@ export class GamesComponent implements OnInit {
         для 2-4 игроков, в которой необходимо \n
         составлять слова с помощью букв`,
         online: Math.floor(Math.random() * 1000),
-        url: '/blockhead'
+        url: '/opponents'
       },
       {
         number: '02',
