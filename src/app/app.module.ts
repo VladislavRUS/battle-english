@@ -10,6 +10,10 @@ import { GamesComponent } from './components/games/games.component';
 import { HeaderComponent } from './components/header/header.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { BlockheadComponent } from './components/blockhead/blockhead.component';
+import { DynamicContentComponent } from './components/dynamic-content/dynamic-content.component';
+import { TooltipComponent } from './components/tooltip/tooltip.component';
+import { TooltipService } from './services/tooltip.service';
+import { UserTooltipComponent } from './components/user-tooltip/user-tooltip.component';
 
 const appRoutes: Routes = [
   {
@@ -33,7 +37,10 @@ const appRoutes: Routes = [
     GamesComponent,
     HeaderComponent,
     LandingLoginComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    DynamicContentComponent,
+    TooltipComponent,
+    UserTooltipComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +48,11 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    LoginService
+    LoginService,
+    TooltipService
+  ],
+  entryComponents: [
+    UserTooltipComponent
   ],
   bootstrap: [AppComponent]
 })
