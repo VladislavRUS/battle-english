@@ -26,14 +26,48 @@
     }
 
     &__descriptions {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
         position: relative;
-        top: -3px;
-        padding: 10px;
+        left: -3px;
+        padding: 20px 26px;
         font-size: 16px;
         @include font-regular();
         color: $gray-font-color;
-        resize: none;
-        max-height: 226px;
+        width: 330px;
+        height: 226px;
+        background-color: white;
+        @include border-bottom(4px, $light-grey);
+        margin-bottom: 35px;
+        overflow-y: scroll;
+
+        &-item {
+            position: relative;
+            padding: 5px 10px;
+            margin-bottom: 10px;
+            border-radius: 13px;
+            max-width: 100px;
+            word-wrap: break-word;
+            font-size: 13px;
+            background-color: $light-grey;
+            color: black;
+            border-bottom-left-radius: 0;
+
+            &._pull-right {
+                align-self: flex-end;
+                border-bottom-left-radius: 13px;
+                border-bottom-right-radius: 0;
+            }
+
+            &._wrong {
+                background-color: #FDCACC;
+            }
+
+            &._right {
+                background-color: #BFF0D9;
+            }
+        }
     }
 
     &__title {
@@ -47,12 +81,19 @@
     &__game {
         display: flex;
         justify-content: space-between;
+
+        &-field {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
     }
 
     &__info {
         position: relative;
-        top: -12px;
         display: flex;
+        top: 75px;
         flex-direction: column;
         max-width: 300px;
     }
@@ -141,12 +182,71 @@
         }
     }
 
+    &__describe {
+        display: flex;
+        flex-direction: column;
+        
+        &-text {
+            margin-bottom: 16px;
+            padding-top: 20px;
+            @include font-light();
+            color: white;
+            font-size: 14px;
+            letter-spacing: 0.05em;
+        }
+
+        &-word {
+            display: flex;
+            background-color: white;
+            padding: 14px;
+            width: 205px;
+            margin-bottom: 26px;
+            align-items: center;
+            @include border-bottom(6px, $light-grey);
+
+            &-value {
+                @include font-bold();
+                font-size: 17px;
+                color: $lose-color;
+                text-transform: uppercase;
+            }
+
+            &-translation {
+                position: relative;
+                top: 1px;
+                padding-left: 10px;
+                @include font-light();
+                font-size: 14px;
+
+                &._dark {
+                    padding-left: 5px;
+                    color: $dark-grey;
+                    @include font-bold();
+                }
+
+                &._from {
+                    padding-left: 5px;
+                }                
+            }
+
+
+        }
+    }
+
     &__time-remained {
-        margin-bottom: 20px;
+        position: relative;
+        top: -5px;
+        left: -5px;
+        padding: 10px 25px;
+        border-radius: 13px;
+        display: inline-block;
+        background-color: white;
+        margin-bottom: 28px;
         color: $lose-color;
-        @include font-bold();
-        font-size: 34px;
+        @include font-regular();
+        font-size: 28px;
         text-align: center;
+        @include border-bottom(4px, $light-grey);
     }
 
     &__word {
@@ -165,36 +265,52 @@
 
 
     &__input {
-        padding: 5px 10px;
+        padding: 5px 20px;
+        position: relative;
+        left: -26px;
+        height: 50px;
+        width: 278px;
+        border: none;
         font-size: 16px;
-        width: 100%;
+        @include font-light();
+        @include border-bottom(4px, $light-grey);
+        outline: none;
     }
 
     &__actions {
+        position: relative;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
 
         &-btn {
             display: inline-block;
-            padding: 5px 15px;
+            padding: 5px 18px;
             color: white;
             @include font-light();
             font-size: 12px;
             border-radius: 13px;
-            margin-bottom: 15px;
+            margin-bottom: 30px;
             cursor: pointer;
 
             &._send {
+                padding: 10px;
+                margin: 10px 0;
+                border-radius: 0;
+                position: absolute;
+                bottom: -10px;
+                right: 0;
                 display: block;
                 text-align: center;
-                background-color: $lose-color;
-                @include border-bottom(4px, $dark-red);
+                width: 50px;
+                height: 50px;
+                background-color: $primary-green;
+                @include border-bottom(4px, $dark-green);
                 transition: background-color .2s ease;
-                margin: 10px 0;
+                line-height: 50px;
 
                 &:hover {
-                    background-color: $dark-red;
+                    background-color: $dark-green;
                 }
             }
 

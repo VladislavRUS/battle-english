@@ -5,7 +5,7 @@ const io = require('socket.io')(server);
 const PLAYERS = [];
 const MAX_PLAYERS_NUMBER = 2;
 const GAMES = [];
-const ONE_MINUTE_CNT = 6000;
+const ONE_MINUTE_CNT = 10;
 const MESSAGES = {
   START_GAME: 'start-game',
   END_GAME: 'end-game',
@@ -16,7 +16,8 @@ const MESSAGES = {
   NEW_WORD: 'new-word',
   NEW_TURN: 'new-turn',
   DESCRIBE: 'describe',
-  NEW_DESCIPTION: 'new-description'
+  NEW_DESCIPTION: 'new-description',
+  USER_INFO: 'user-info'
 }
 const MAX_WORDS_GUESSED = 10;
 
@@ -52,47 +53,76 @@ function Game(players, idx) {
     }
   };
 
-  players.forEach(player => {
-    player.emit(MESSAGES.START_GAME, {
-      team: 'first'
-    });
+  const playersWebInfo = [];
 
+  start();
+
+  players.forEach((player, idx) => {
+    player.on(MESSAGES.USER_INFO, (msg) => {
+      
+      sendOthers(MESSAGES.USER_INFO, {
+        name: msg.name,
+        photo: msg.photo
+      });
+    });
+  });
+
+  function sendOthers(event, data) {
+    players.forEach((player, idx) => {
+      for (var i = 0; i < players.length; i++) {
+        if (idx !== i) {
+          players[i].emit(event, data)
+        }
+      }
+    });
+  }
+
+  function sendAll(event, data) {
+    players.forEach(player => {
+      player.emit(event, data || {});
+    });
+  }
+
+  function start() {
+    sendAll(MESSAGES.START_GAME);
     startTurn();
     nextWord();
-  });
+  }
 
   players.forEach((player, idx) => {
     player.on(MESSAGES.DESCRIBE, (msg) => {
-      if (isPlayerTurn(idx)) {
         players.forEach((other, otherIdx) => {
-          if (idx !== otherIdx) {
             other.emit(MESSAGES.NEW_DESCIPTION, {
               description: msg.description
             });
-          }
         });
-      }
     });
-  })
+  });
+
   players.forEach(player => {
     player.on(MESSAGES.GUESS, (msg) => {
-      if (msg.word === words[currentWord]) {
-        teams.msg['team'].score++;
+      
+      console.log(msg.word, words[currentWord]);
+
+      if (msg.word.toLowerCase() === words[currentWord].toLowerCase()) {
         successGuess(msg.word);
         nextWord();
 
       } else {
         players.forEach(player => {
-          player.emit(MESSAGES.GUESS_WRONG);
+          player.emit(MESSAGES.GUESS_WRONG, {
+            description: msg.word
+          });
         })
       }
     });
   });
 
   function successGuess(word) {
+    
     players.forEach(player => {
       player.emit(MESSAGES.GUESS_SUCCESS, {
-        word: word
+        description: word
       });
     });
   }
@@ -105,6 +135,8 @@ function Game(players, idx) {
         player.emit(MESSAGES.NEW_WORD, {
           word: words[currentWord]
         });
+
+        console.log('Emit new word');
       }
     });
   }
@@ -140,7 +172,7 @@ function Game(players, idx) {
             endGame();
 
           } else {
-            startTurn();
+            start();
           }
         }
 
@@ -162,8 +194,6 @@ function Game(players, idx) {
     GAMES.splice(idx, 1);
     clearInterval(gameInterval);
   }
-
-  startTurn();
 }
 
 server.listen(5000, () => {

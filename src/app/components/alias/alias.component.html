@@ -10,44 +10,76 @@
         <div class="alias__info">
           <div class="alias__user _left">
             <div class="alias__user-logo">
-              <img src="https://pp.userapi.com/c639619/v639619504/2f574/nua37r6QCP4.jpg">
+              <img src="{{getLeftUser()?.photo}}">
             </div>
-            <div class="alias__user-name">Курочкин Владислав</div>
+            <div class="alias__user-name">{{getLeftUser()?.name}}</div>
           </div>
 
-          <div class="alias__words">
-            <div class="alias__words-item" *ngFor="let word of guessedWords">
-              <div class="alias__words-item-value">{{word.value}}</div>
-              <div class="alias__words-item-translation">{{word.translation}}</div>
+          <div class="alias__describe">
+            <div class="alias__describe-text">
+              Вам нужно объяснить слово:
+            </div>
+            <div class="alias__describe-word">
+              <div class="alias__describe-word-value">{{wordDescribe}}</div>
+              <div class="alias__describe-word-translation">(...)</div>
             </div>
           </div>
+
+          <div class="alias__actions">
+            <div class="alias__actions-btn _miss">
+              Пропустить слово
+            </div>
+          </div>
+          <!-- <div class="alias__score">
+            <div class="alias__score-text">Очки:</div>
+            <div class="alias__score-value">{{turn ? me.score : opponent.score}}</div>
+          </div> -->
         </div>
 
         <div class="alias__game-field">
-          <div class="alias__time-remained">{{timeRemained}}</div>
-          <div class="alias__word">
-            <div class="alias__word-describe" *ngIf="turn; else guess">{{wordDescribe}}</div>
-            <textarea readonly="true" class="alias__descriptions" resize="false" id="" cols="30" rows="10" *ngIf="!turn" [ngModel]="description"></textarea>
+          <div class="alias__time-remained">{{timeRemained || '0:00'}}</div>
+          <div class="alias__descriptions">
+            <div class="alias__descriptions-item" [ngClass]="description?.class" *ngFor="let description of descriptions">
+              {{description.text}}
+            </div>
           </div>
-          <input type="text" class="alias__input" [(ngModel)]="inputData">
-          <div class="alias__actions-btn _send" (click)="send()">Отправить</div>
+          <input type="text" class="alias__input" [(ngModel)]="inputData" placeholder="Введите сообщение" (keyup.enter)="$event.keyCode === 13 && send()">
+          <div class="alias__actions-btn _send" (click)="send()">
+            <img src="/assets/styles/images/arrow.svg" alt="">
+          </div>
         </div>
 
         <div class="alias__info">
-          <div class="alias__user _right">
-            <div class="alias__user-name">Андросова Татьяна</div>
-            <div class="alias__user-logo">
-              <img src="https://pp.userapi.com/c621707/v621707411/384ca/a1Nf_PM17_U.jpg">
+            <div class="alias__user _left">
+              <div class="alias__user-logo">
+                  <img src="{{getRightUser()?.photo}}">
+              </div>
+              <div class="alias__user-name">{{getRightUser()?.name}}</div>
             </div>
+  
+            <div class="alias__describe">
+              <div class="alias__describe-text">
+                Осталось попыток
+              </div>
+              <div class="alias__describe-word">
+                <div class="alias__describe-word-value">{{maxFailes - failes}}</div>
+                <div class="alias__describe-word-translation _from">из</div>
+                <div class="alias__describe-word-translation _dark">{{maxFailes}}</div>
+              </div>
+            </div>
+  
+            <div class="alias__actions">
+              <div class="alias__actions-btn _giveup">
+                Посмотреть статистику
+              </div>
+            </div>
+            <!-- <div class="alias__score">
+              <div class="alias__score-text">Очки:</div>
+              <div class="alias__score-value">{{turn ? opponent.score : me.score}}</div>
+            </div> -->
           </div>
 
-          <div class="alias__words _right">
-            <div class="alias__words-item" *ngFor="let word of words">
-              <div class="alias__words-item-value">{{word.value}}</div>
-              <div class="alias__words-item-translation">{{word.translation}}</div>
-            </div>
-          </div>
-        </div>
+
       </div>
     </ng-template>
   </div>

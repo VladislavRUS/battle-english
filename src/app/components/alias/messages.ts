@@ -8,7 +8,8 @@ const MESSAGES = {
     NEW_WORD: 'new-word',
     NEW_TURN: 'new-turn',
     DESCRIBE: 'describe',
-    NEW_DESCIPTION: 'new-description'
+    NEW_DESCIPTION: 'new-description',
+    USER_INFO: 'user-info'
 }
 
 export default MESSAGES;

@@ -1,0 +1,99 @@
+.interests {
+    height: 100%;
+    background-color: $primary-orange;
+
+    &__wrapper {
+        max-width: 950px;
+        margin: 0 auto;
+    }
+
+    &__choose {
+        display: flex;
+        align-items: center;
+        padding-top: 35px;
+        letter-spacing: 0.08em;
+        margin-bottom: 30px;
+
+        &-text {
+            font-size: 28px;
+            color: white;    
+            @include font-bold();
+            margin-right: 35px;
+        }
+
+        &-arrow {
+            position: relative;
+            left: -14px;
+            top: 4px;
+            max-width: 45px;
+        }
+    }
+
+    &__list {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+
+        &-item {
+            position: relative;
+            margin-bottom: 60px;
+            width: 120px;
+            height: 80px;
+            background-color: white;
+            border-radius: 13px;
+            @include border-bottom(6px, $light-grey);
+            text-align: center;
+            line-height: 100px;
+            @include font-bold();
+            color: $gray-font-color;
+            cursor: pointer;
+
+            & + & {
+                margin-left: 35px;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                left: 50px;
+                top: 10px;
+                width: 20px;
+                height: 10px;
+                border-left: 4px solid $lose-color;
+                border-bottom: 4px solid $lose-color;
+                transform: rotate(-45deg) scale(0);
+                opacity: 0;
+                transition: opacity .2s ease, transform .2s ease;
+            }
+
+            &._selected::after {
+                transform: rotate(-45deg) scale(1);
+                opacity: 1;
+            }
+        }
+    }
+
+    &__continue {
+        display: flex;
+        justify-content: center;
+
+        &-text {
+            max-width: 200px;
+            padding: 10px;
+            @include font-bold();
+            border-radius: 13px;
+            color: white;
+            font-size: 16px;
+            background-color: $lose-color;
+            text-align: center;
+            @include border-bottom(6px, $dark-red);
+            cursor: pointer;
+            transition: background-color .2s ease;
+            outline: none;
+
+            &:hover {
+                background-color: $dark-red;
+            }
+        }
+    }
+}

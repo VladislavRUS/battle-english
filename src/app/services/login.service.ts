@@ -70,4 +70,12 @@ export class LoginService {
     isLoggedIn(): boolean {
         return this.loggedIn;
     }
+
+    logoutVk(): Promise<any> {
+        return new Promise((resolve, reject) => {   
+            VK.Auth.logout(() => {
+                this.loggedIn = false;
+            });
+        });
+    }
 }

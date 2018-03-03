@@ -14,9 +14,8 @@ export class LandingLoginComponent implements OnInit {
   }
 
   onClick(): void {
-    // this.loginService.loggedIn = true;
     this.loginService.initVkAuth().then(() => {
-      this.router.navigateByUrl('/games');
+      this.router.navigateByUrl('/interests');
     });
   }
 }

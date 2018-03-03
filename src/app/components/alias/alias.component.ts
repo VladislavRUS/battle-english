@@ -18,10 +18,21 @@ export class AliasComponent implements OnInit, OnDestroy {
   inputData = '';
   description = '';
   guessedWords: any[];
+  players: any[];
+  descriptions = [];
+  failes = 0;
+  maxFailes = 5;
+  opponent: any;
+  myScore = 0;
+  opponentScore = 0;
 
-  constructor(private socket: Socket) {
-    this.turn = true;
+  me = {
+    name: 'Курочкин Владислав',
+    photo: 'https://pp.userapi.com/c639619/v639619504/2f574/nua37r6QCP4.jpg',
+    score: 0
   }
+
+  constructor(private socket: Socket) {}
 
   ngOnInit() {
     setInterval(() => {
@@ -36,12 +47,23 @@ export class AliasComponent implements OnInit, OnDestroy {
 
     this.socket.connect();
 
-    this.socket.fromEvent(MESSAGES.START_GAME).subscribe(() => {
+    this.socket.fromEvent(MESSAGES.START_GAME).subscribe((msg: any) => {
+      
+      this.socket.emit(MESSAGES.USER_INFO, this.me);
+
       this.started = true;
     });
 
+    this.socket.on(MESSAGES.USER_INFO, (msg: any) => {
+      this.opponent = msg;
+      this.opponent.score = 0;
+    });
+
+    this
     this.socket.fromEvent(MESSAGES.NEW_DESCIPTION).subscribe((msg: any) => {
-      this.description += '\n' + msg.description;
+      this.descriptions.push({
+        text: msg.description
+      });
     });
 
     this.socket.fromEvent(MESSAGES.NEW_WORD).subscribe((msg: any) => {
@@ -49,18 +71,28 @@ export class AliasComponent implements OnInit, OnDestroy {
     });
 
     this.socket.fromEvent(MESSAGES.GUESS_SUCCESS).subscribe((msg: any) => {
+      this.descriptions.push({
+        text: msg.description,
+        class: '_pull-right _right'
+      });
+
       if (!this.turn) {
-        this.guessedWords.push({
-          value: msg.word,
-          translation: msg.word
-        });
+        this.me.score++;
+
+      } else {
+        this.opponent.score++;
       }
     });
 
     this.socket.fromEvent(MESSAGES.GUESS_WRONG).subscribe((msg: any) => {
       if (!this.turn) {
-        
+        this.failes++;
       }
+
+      this.descriptions.push({
+        text: msg.description,
+        class: '_pull-right _wrong'
+      });
     });
 
     this.socket.fromEvent(MESSAGES.TIME_REMAINED).subscribe((msg: any) => {
@@ -75,7 +107,31 @@ export class AliasComponent implements OnInit, OnDestroy {
 
     this.socket.fromEvent(MESSAGES.NEW_TURN).subscribe((msg: any) => {
       this.turn = Boolean(msg.turn);
+      this.failes = 0;
+      this.descriptions = [];
+
+      if (!this.turn) {
+        this.wordDescribe = '';
+      }
     });
+  }
+
+  getLeftUser(): any {
+    if (this.turn) {
+      return this.me
+
+    } else {
+      return this.opponent;
+    }
+  }
+
+  getRightUser(): any {
+    if (!this.turn) {
+      return this.me
+
+    } else {
+      return this.opponent;
+    }
   }
 
   ngOnDestroy(): void {

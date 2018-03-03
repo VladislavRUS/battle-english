@@ -1,0 +1,23 @@
+<div class="interests">
+  <div class="interests__wrapper">
+    <div class="interests__choose">
+      <div class="interests__choose-text">
+        Выберите ваши увлечения
+      </div>
+      <div class="interests__choose-arrow">
+        <img src="/assets/styles/images/arrow.svg">
+      </div>
+    </div>
+    <div class="interests__list">
+      <div class="interests__list-item" [ngClass]="{'_selected': isSelected(interest)}" (click)="onClick(interest)" *ngFor="let interest of interests">
+        <div class="interests__list-item-title">
+          {{interest.title}}
+        </div>
+      </div>
+    </div>
+
+    <div class="interests__continue">
+      <div class="interests__continue-text" routerLink="/games">Продолжить</div>
+    </div>
+  </div>
+</div>

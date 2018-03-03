@@ -18,6 +18,7 @@ import { TooltipService } from './services/tooltip.service';
 import { UserTooltipComponent } from './components/user-tooltip/user-tooltip.component';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { AliasComponent } from './components/alias/alias.component';
+import { InterestsComponent } from './components/interests/interests.component';
 
 const appRoutes: Routes = [
   {
@@ -34,6 +35,9 @@ const appRoutes: Routes = [
   },
   {
     path: 'alias', component: AliasComponent
+  },
+  {
+    path: 'interests', component: InterestsComponent
   },
   {
     path: '', redirectTo: '/games', pathMatch: 'full'
@@ -54,7 +58,8 @@ const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
     DynamicContentComponent,
     TooltipComponent,
     UserTooltipComponent,
-    AliasComponent
+    AliasComponent,
+    InterestsComponent
   ],
   imports: [
     BrowserModule,
