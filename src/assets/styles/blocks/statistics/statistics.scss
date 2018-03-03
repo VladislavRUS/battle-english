@@ -13,7 +13,7 @@
         align-items: center;
         padding-top: 35px;
         letter-spacing: 0.08em;
-        margin-bottom: 30px;
+        margin-bottom: 80px;
     }
 
     &__text {
@@ -90,7 +90,7 @@
 .main-content {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 60px;
+    margin-bottom: 70px;
 
     &__total-results {
         min-width: 300px;
@@ -162,9 +162,19 @@
     }
     &__win {
         width: 25%;
+
+        &._max {
+            font-size: 21px;
+            color: $win-color;
+        }
     }
     &__lose {
         width: 25%;
+
+        &._max {
+            font-size: 21px;
+            color: $lose-color;
+        }
     }
 
     &__row {
