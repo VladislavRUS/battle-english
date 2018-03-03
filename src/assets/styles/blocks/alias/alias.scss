@@ -25,6 +25,17 @@
         }
     }
 
+    &__descriptions {
+        position: relative;
+        top: -3px;
+        padding: 10px;
+        font-size: 16px;
+        @include font-regular();
+        color: $gray-font-color;
+        resize: none;
+        max-height: 226px;
+    }
+
     &__title {
         position: relative;
         color: white;
@@ -142,6 +153,7 @@
         margin-bottom: 20px;
 
         &-describe {
+            min-height: 135px;
             padding: 60px 70px;
             text-align: center;
             color: $lose-color;

@@ -14,6 +14,10 @@ export class AliasComponent implements OnInit, OnDestroy {
   message = 'Ожидание соперников';
   dot = '.';
   waitingMessage = '';
+  wordDescribe = '';
+  inputData = '';
+  description = '';
+  guessedWords: any[];
 
   constructor(private socket: Socket) {
     this.turn = true;
@@ -36,6 +40,29 @@ export class AliasComponent implements OnInit, OnDestroy {
       this.started = true;
     });
 
+    this.socket.fromEvent(MESSAGES.NEW_DESCIPTION).subscribe((msg: any) => {
+      this.description += '\n' + msg.description;
+    });
+
+    this.socket.fromEvent(MESSAGES.NEW_WORD).subscribe((msg: any) => {
+      this.wordDescribe = msg.word;
+    });
+
+    this.socket.fromEvent(MESSAGES.GUESS_SUCCESS).subscribe((msg: any) => {
+      if (!this.turn) {
+        this.guessedWords.push({
+          value: msg.word,
+          translation: msg.word
+        });
+      }
+    });
+
+    this.socket.fromEvent(MESSAGES.GUESS_WRONG).subscribe((msg: any) => {
+      if (!this.turn) {
+        
+      }
+    });
+
     this.socket.fromEvent(MESSAGES.TIME_REMAINED).subscribe((msg: any) => {
       let seconds = String(60 - msg.counter);
 
@@ -48,12 +75,25 @@ export class AliasComponent implements OnInit, OnDestroy {
 
     this.socket.fromEvent(MESSAGES.NEW_TURN).subscribe((msg: any) => {
       this.turn = Boolean(msg.turn);
-
-      console.log(this.turn);
     });
   }
 
   ngOnDestroy(): void {
     this.socket.disconnect();
+  }
+
+  send(): void {
+    if (this.turn) {
+      this.socket.emit(MESSAGES.DESCRIBE, {
+        description: this.inputData
+      });
+
+    } else {
+      this.socket.emit(MESSAGES.GUESS, {
+        word: this.inputData
+      });
+    }
+
+    this.inputData = '';
   }
 }

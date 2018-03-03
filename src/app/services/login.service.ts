@@ -7,7 +7,7 @@ declare const VK: any;
 export class LoginService {
 
     public loggedIn = false;
-    // public user: any;
+    //public user: any;
     public user = {
         first_name: 'Владислав',
         last_name: 'Курочкин'

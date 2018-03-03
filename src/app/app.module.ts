@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { LandingLoginComponent } from './components/landing-login/landing-login.component';
@@ -59,7 +60,8 @@ const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes, { useHash: true }),
-    SocketIoModule.forRoot(config) 
+    SocketIoModule.forRoot(config),
+    FormsModule 
   ],
   providers: [
     LoginService,

@@ -5,15 +5,18 @@ const io = require('socket.io')(server);
 const PLAYERS = [];
 const MAX_PLAYERS_NUMBER = 2;
 const GAMES = [];
-const ONE_MINUTE_CNT = 5;
+const ONE_MINUTE_CNT = 6000;
 const MESSAGES = {
   START_GAME: 'start-game',
   END_GAME: 'end-game',
   TIME_REMAINED: 'time-remained',
   GUESS: 'guess',
   GUESS_WRONG: 'guess-wrong',
+  GUESS_SUCCESS: 'guess-success',
   NEW_WORD: 'new-word',
-  NEW_TURN: 'new-turn'
+  NEW_TURN: 'new-turn',
+  DESCRIBE: 'describe',
+  NEW_DESCIPTION: 'new-description'
 }
 const MAX_WORDS_GUESSED = 10;
 
@@ -55,12 +58,27 @@ function Game(players, idx) {
     });
 
     startTurn();
+    nextWord();
   });
 
+  players.forEach((player, idx) => {
+    player.on(MESSAGES.DESCRIBE, (msg) => {
+      if (isPlayerTurn(idx)) {
+        players.forEach((other, otherIdx) => {
+          if (idx !== otherIdx) {
+            other.emit(MESSAGES.NEW_DESCIPTION, {
+              description: msg.description
+            });
+          }
+        });
+      }
+    });
+  })
   players.forEach(player => {
     player.on(MESSAGES.GUESS, (msg) => {
       if (msg.word === words[currentWord]) {
         teams.msg['team'].score++;
+        successGuess(msg.word);
         nextWord();
 
       } else {
@@ -71,14 +89,28 @@ function Game(players, idx) {
     });
   });
 
+  function successGuess(word) {
+    players.forEach(player => {
+      player.emit(MESSAGES.GUESS_SUCCESS, {
+        word: word
+      });
+    });
+  }
+
   function nextWord() {
     currentWord++;
 
-    players.forEach(player => {
-      player.emit(MESSAGES.NEW_WORD, {
-        word: words[currentWord]
-      })
+    players.forEach((player, idx) => {
+      if (isPlayerTurn(idx)) {
+        player.emit(MESSAGES.NEW_WORD, {
+          word: words[currentWord]
+        });
+      }
     });
+  }
+
+  function isPlayerTurn(idx) {
+    return teams[currentTeam].turn === idx
   }
 
   function startTurn() {
@@ -88,7 +120,7 @@ function Game(players, idx) {
 
     players.forEach((player, idx) => {
       player.emit(MESSAGES.NEW_TURN, {
-        turn: teams[currentTeam].turn === idx
+        turn: isPlayerTurn(idx)
       });
     });
 
@@ -116,8 +148,6 @@ function Game(players, idx) {
           player.emit(MESSAGES.TIME_REMAINED, {
             counter: cnt
           });
-
-          console.log(cnt);
         });
 
       }, 1000);

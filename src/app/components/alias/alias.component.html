@@ -16,7 +16,7 @@
           </div>
 
           <div class="alias__words">
-            <div class="alias__words-item" *ngFor="let word of words">
+            <div class="alias__words-item" *ngFor="let word of guessedWords">
               <div class="alias__words-item-value">{{word.value}}</div>
               <div class="alias__words-item-translation">{{word.translation}}</div>
             </div>
@@ -26,11 +26,11 @@
         <div class="alias__game-field">
           <div class="alias__time-remained">{{timeRemained}}</div>
           <div class="alias__word">
-            <div class="alias__word-describe" *ngIf="turn; else guess">Word</div>
-            <textarea name="" id="" cols="30" rows="10" *ngIf="!turn"></textarea>
+            <div class="alias__word-describe" *ngIf="turn; else guess">{{wordDescribe}}</div>
+            <textarea readonly="true" class="alias__descriptions" resize="false" id="" cols="30" rows="10" *ngIf="!turn" [ngModel]="description"></textarea>
           </div>
-          <input type="text" class="alias__input">
-          <div class="alias__actions-btn _send">Отправить</div>
+          <input type="text" class="alias__input" [(ngModel)]="inputData">
+          <div class="alias__actions-btn _send" (click)="send()">Отправить</div>
         </div>
 
         <div class="alias__info">
