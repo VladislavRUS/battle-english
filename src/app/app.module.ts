@@ -15,6 +15,9 @@ const appRoutes: Routes = [
     path: 'games', component: GamesComponent
   },
   {
+    path: 'statistics', component: StatisticsComponent
+  },
+  {
     path: '', redirectTo: '/games', pathMatch: 'full'
   }
 ]

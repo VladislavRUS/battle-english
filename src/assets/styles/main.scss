@@ -1,7 +1,9 @@
 @import 'common/reset.css';
 @import 'common/fonts';
 @import 'common/normalize';
+@import 'common/variables';
 
 @import 'blocks/login/login';
 @import 'blocks/header/header';
 @import 'blocks/games/games';
+@import 'blocks/statistics/statistics';
