@@ -31,44 +31,33 @@
 
     &__list {
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-between;
         flex-wrap: wrap;
+        margin-bottom: 40px;
 
         &-item {
             position: relative;
-            margin-bottom: 60px;
-            width: 120px;
-            height: 80px;
+            margin-bottom: 30px;
+            width: calc(100%/6.7);
+            height: 60px;
             background-color: white;
-            border-radius: 13px;
+            border-radius: 10px;
             @include border-bottom(6px, $light-grey);
             text-align: center;
-            line-height: 100px;
-            @include font-bold();
+            line-height: 60px;
+            @include font-regular();
             color: $gray-font-color;
+            font-size: 16px;
             cursor: pointer;
 
-            & + & {
-                margin-left: 35px;
+            &._selected {
+                color: white;
+                background: $primary-green;
+                @include border-bottom(6px, $dark-green);
             }
-
-            &::after {
-                content: "";
-                position: absolute;
-                left: 50px;
-                top: 10px;
-                width: 20px;
-                height: 10px;
-                border-left: 4px solid $lose-color;
-                border-bottom: 4px solid $lose-color;
-                transform: rotate(-45deg) scale(0);
-                opacity: 0;
-                transition: opacity .2s ease, transform .2s ease;
-            }
-
-            &._selected::after {
-                transform: rotate(-45deg) scale(1);
-                opacity: 1;
+            
+            &:not(._selected):hover {
+                background: $extra-light-grey;
             }
         }
     }
@@ -78,16 +67,16 @@
         justify-content: center;
 
         &-text {
-            max-width: 200px;
-            padding: 10px;
-            @include font-bold();
-            border-radius: 13px;
+            padding: 15px 45px;
+            @include font-regular();
+            border-radius: 25px;
             color: white;
             font-size: 16px;
             background-color: $lose-color;
             text-align: center;
             @include border-bottom(6px, $dark-red);
             cursor: pointer;
+            font-size: 16px;
             transition: background-color .2s ease;
             outline: none;
 

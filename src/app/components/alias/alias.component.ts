@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { LoginService } from '../../services/login.service';
 import { Socket } from 'ng-socket-io';
 import MESSAGES from './messages';
 
@@ -29,12 +30,12 @@ export class AliasComponent implements OnInit, OnDestroy {
   right: any;
 
   me = {
-    name: 'Курочкин Владислав',
-    photo: 'https://pp.userapi.com/c639619/v639619504/2f574/nua37r6QCP4.jpg',
+    name: this.loginService.user.first_name + ' ' + this.loginService.user.last_name,
+    photo: this.loginService.user.photo_50,
     score: 0
   }
 
-  constructor(private socket: Socket) {}
+  constructor(private socket: Socket, private loginService: LoginService) { }
 
   ngOnInit() {
     setInterval(() => {
@@ -50,7 +51,7 @@ export class AliasComponent implements OnInit, OnDestroy {
     this.socket.connect();
 
     this.socket.fromEvent(MESSAGES.START_GAME).subscribe((msg: any) => {
-      
+
       this.socket.emit(MESSAGES.USER_INFO, this.me);
 
       this.started = true;

@@ -5,7 +5,7 @@ const io = require('socket.io')(server);
 const PLAYERS = [];
 const MAX_PLAYERS_NUMBER = 2;
 const GAMES = [];
-const ONE_MINUTE_CNT = 10;
+const ONE_MINUTE_CNT = 60;
 const MESSAGES = {
   START_GAME: 'start-game',
   END_GAME: 'end-game',
