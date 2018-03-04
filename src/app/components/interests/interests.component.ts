@@ -69,8 +69,6 @@ export class InterestsComponent implements OnInit {
   constructor(private loginService: LoginService) { }
 
   ngOnInit() {
-    //this.loginervice.getGroups();
-    this.loginService.getFriends(24510150);
   }
 
   onClick(interest: any): void {
