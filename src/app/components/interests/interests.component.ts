@@ -42,6 +42,24 @@ export class InterestsComponent implements OnInit {
     },
     {
       title: 'Общение'
+    },
+    {
+      title: 'Туризм'
+    },
+    {
+      title: 'Юмор'
+    },
+    {
+      title: 'Кухня'
+    },
+    {
+      title: 'Мода'
+    },
+    {
+      title: 'Садовдство'
+    },
+    {
+      title: 'Здоровье'
     }
   ];
   
