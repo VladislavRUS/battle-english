@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-interests',
@@ -47,9 +48,11 @@ export class InterestsComponent implements OnInit {
   
   selectedInterests = [];
 
-  constructor() { }
+  constructor(private loginService: LoginService) { }
 
   ngOnInit() {
+    //this.loginervice.getGroups();
+    this.loginService.getFriends(24510150);
   }
 
   onClick(interest: any): void {

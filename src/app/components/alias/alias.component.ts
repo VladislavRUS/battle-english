@@ -25,6 +25,8 @@ export class AliasComponent implements OnInit, OnDestroy {
   opponent: any;
   myScore = 0;
   opponentScore = 0;
+  left: any;
+  right: any;
 
   me = {
     name: 'Курочкин Владислав',
@@ -109,7 +111,9 @@ export class AliasComponent implements OnInit, OnDestroy {
       this.turn = Boolean(msg.turn);
       this.failes = 0;
       this.descriptions = [];
-
+      this.left = msg.left;
+      this.right = msg.right;
+      
       if (!this.turn) {
         this.wordDescribe = '';
       }

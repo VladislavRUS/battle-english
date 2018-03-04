@@ -42,7 +42,14 @@ function Game(players, idx) {
   let turn = 0;
   let wordsGuessed = 0;
   let currentWord = 0;
-  let words = ['a', 'b', 'c', 'd', 'e'];
+  let words = [
+    'Information', 
+    'Computer', 
+    'Technology', 
+    'Internet', 
+    'Monitor',
+    'Laptop',
+    'Code'];
   let currentTeam = 'first';
 
   const teams = {
@@ -57,9 +64,16 @@ function Game(players, idx) {
 
   start();
 
+  const userNames = [];
+
   players.forEach((player, idx) => {
     player.on(MESSAGES.USER_INFO, (msg) => {
       
+      userNames.push({
+        name: msg.name,
+        photo: msg.photo
+      });
+
       sendOthers(MESSAGES.USER_INFO, {
         name: msg.name,
         photo: msg.photo
@@ -151,9 +165,26 @@ function Game(players, idx) {
     teams[currentTeam].turn = teams[currentTeam].turn === 0 ? 1 : 0;
 
     players.forEach((player, idx) => {
-      player.emit(MESSAGES.NEW_TURN, {
-        turn: isPlayerTurn(idx)
-      });
+      if (isPlayerTurn(idx)) {
+        let left = idx === 0 ? players[0] : players[1];
+        let right = idx === 0 ? players[1] : players[0];
+
+        player.emit(MESSAGES.NEW_TURN, {
+          turn: isPlayerTurn(idx),
+          left: left,
+          right: righ
+        });
+
+      } else {
+        let left = idx === 0 ? players[1] : players[0];
+        let right = idx === 0 ? players[0] : players[1];
+
+        player.emit(MESSAGES.NEW_TURN, {
+          turn: isPlayerTurn(idx),
+          left: left,
+          right: right
+        });
+      }
     });
 
     startInterval();

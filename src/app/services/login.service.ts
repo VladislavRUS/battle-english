@@ -78,4 +78,38 @@ export class LoginService {
             });
         });
     }
+
+    getFriends(userId: number): void {
+        VK.Api.call('friends.get', {user_id: userId, fields: 'photo_50', v: 5.73}, resp => {
+            console.log(JSON.stringify(resp.response.items.slice(0, 50)));
+        });
+    }
+
+    async getGroups(): Promise<any> {
+        const users = [2288719,3049013,3578985,5226017,5379002,5647269,5684846,6237309,6535322,7437737,8160990,8573331,8639769,9342460,9695600,9872504,10681483,11043031,11081968,11304792,11555607,11893164,11992329,12285679,12950410,14376791,14387802,14420915,14655903,14883401,15061775,15524553,16047045,17525607,17658936,17950889,18005637,18017071,18124605,18504032,19016481,19354037,19502519,19553090,19604387,20852135,21274057,21592251,21764502,21779009];
+        const result = [];
+
+        for (let user of users) {
+            const groups = await this.getUserGroups(user);
+
+            const object = {
+                user: user,
+                groups: groups
+            }
+            console.log(`User ${user} processed`)
+            result.push(object);
+        }
+
+        console.log(JSON.stringify(result));
+    }
+
+    getUserGroups(userId: number): Promise<any> {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                VK.Api.call('friends.get', {user_id: userId, v: 5.73}, resp => {
+                    resolve(resp.response.items);
+                });
+            }, 500)
+        });
+    }
 }
