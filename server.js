@@ -2,9 +2,9 @@ const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 
-app.use(express.static('dist'));
+app.use(express.static(__dirname + '/dist/'));
 
 const PLAYERS = [];
 const MAX_PLAYERS_NUMBER = 2;
