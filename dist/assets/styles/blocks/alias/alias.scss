@@ -1,0 +1,377 @@
+.alias {
+    height: 100%;
+    background-color: #FAB22C;
+
+    &__wrapper {
+        max-width: 950px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        padding-top: 100px;
+    }
+
+    &__waiting {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 150px;
+
+        &-text {
+            width: 470px;
+            font-size: 36px;
+            color: white;
+            @include font-bold();
+        }
+    }
+
+    &__descriptions {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        position: relative;
+        left: -3px;
+        padding: 20px 26px;
+        font-size: 16px;
+        @include font-regular();
+        color: $gray-font-color;
+        width: 330px;
+        height: 226px;
+        background-color: white;
+        @include border-bottom(4px, $light-grey);
+        margin-bottom: 35px;
+        overflow-y: scroll;
+
+        &-item {
+            position: relative;
+            padding: 5px 10px;
+            margin-bottom: 10px;
+            border-radius: 13px;
+            max-width: 100px;
+            word-wrap: break-word;
+            font-size: 13px;
+            background-color: $light-grey;
+            color: black;
+            border-bottom-left-radius: 0;
+
+            &._pull-right {
+                align-self: flex-end;
+                border-bottom-left-radius: 13px;
+                border-bottom-right-radius: 0;
+            }
+
+            &._wrong {
+                background-color: #FDCACC;
+            }
+
+            &._right {
+                background-color: #BFF0D9;
+            }
+        }
+    }
+
+    &__title {
+        position: relative;
+        color: white;
+        @include font-bold();
+        font-size: 34px;
+        margin: 75px auto 0 auto;
+    }
+
+    &__game {
+        display: flex;
+        justify-content: space-between;
+
+        &-field {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    &__info {
+        position: relative;
+        display: flex;
+        top: 75px;
+        flex-direction: column;
+        max-width: 300px;
+    }
+
+    &__user {
+        display: flex;
+        align-items: center;
+        margin-bottom: 13px;
+
+        &._left {
+            justify-content: flex-start;
+        }
+
+        &._right {
+            justify-content: flex-end;
+        }
+
+        &-logo {
+            padding: 3px;
+            margin-right: 20px;
+            background-color: white;
+            border-radius: 50%;
+            max-height: 50px;
+            max-width: 50px;
+            & img {
+                border-radius: 50%;
+            }
+        }
+
+        &-name {
+            max-width: 100px;
+            color: white;
+            @include font-light();
+            line-height: 1.4;
+        }
+    }
+
+    &__words {
+        background-color: white;
+        max-width: 192px;
+        padding: 13px 23px;
+        @include border-bottom(6px, $light-grey);
+        min-height: 220px;
+        margin-bottom: 20px;
+        min-width: 195px;
+
+        &._right {
+            align-self: flex-end;
+        }
+
+        &-item {
+            display: flex;
+            line-height: 1.4;
+            color: $dark-grey;
+            align-items: center;
+
+            &-value {
+                margin-right: 5px;
+                font-size: 16px;
+                @include font-bold();
+            }
+
+            &-translation {
+                font-size: 13px;
+                @include font-light();
+            }
+        }
+    }
+
+    &__score {
+        display: flex;
+        color: white;
+        margin-bottom: 25px;
+        &._right {
+            justify-content: flex-end;
+        }
+        &-text {
+            @include font-bold();
+            font-size: 16px;
+            letter-spacing: 0.05em;
+
+        }
+
+        &-value {
+            @include font-light();
+        }
+    }
+
+    &__describe {
+        display: flex;
+        flex-direction: column;
+        
+        &-text {
+            margin-bottom: 16px;
+            padding-top: 20px;
+            @include font-light();
+            color: white;
+            font-size: 14px;
+            letter-spacing: 0.05em;
+        }
+
+        &-word {
+            display: flex;
+            background-color: white;
+            padding: 14px;
+            width: 205px;
+            margin-bottom: 26px;
+            align-items: center;
+            @include border-bottom(6px, $light-grey);
+
+            &-value {
+                @include font-bold();
+                font-size: 17px;
+                color: $lose-color;
+                text-transform: uppercase;
+            }
+
+            &-translation {
+                position: relative;
+                top: 1px;
+                padding-left: 10px;
+                @include font-light();
+                font-size: 14px;
+
+                &._dark {
+                    padding-left: 5px;
+                    color: $dark-grey;
+                    @include font-bold();
+                }
+
+                &._from {
+                    padding-left: 5px;
+                }                
+            }
+
+
+        }
+    }
+
+    &__time-remained {
+        position: relative;
+        top: -5px;
+        left: -5px;
+        padding: 10px 25px;
+        border-radius: 13px;
+        display: inline-block;
+        background-color: white;
+        margin-bottom: 28px;
+        color: $lose-color;
+        @include font-regular();
+        font-size: 28px;
+        text-align: center;
+        @include border-bottom(4px, $light-grey);
+    }
+
+    &__word {
+        margin-bottom: 20px;
+
+        &-describe {
+            min-height: 135px;
+            padding: 60px 70px;
+            text-align: center;
+            color: $lose-color;
+            @include font-bold();
+            font-size: 34px;
+            background-color: white;
+        }
+    }
+
+
+    &__input {
+        padding: 5px 20px;
+        position: relative;
+        left: -26px;
+        height: 50px;
+        width: 278px;
+        border: none;
+        font-size: 16px;
+        @include font-light();
+        @include border-bottom(4px, $light-grey);
+        outline: none;
+    }
+
+    &__actions {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        &-btn {
+            display: inline-block;
+            padding: 5px 18px;
+            color: white;
+            @include font-light();
+            font-size: 12px;
+            border-radius: 13px;
+            margin-bottom: 30px;
+            cursor: pointer;
+
+            &._send {
+                padding: 10px;
+                margin: 10px 0;
+                border-radius: 0;
+                position: absolute;
+                bottom: -10px;
+                right: 0;
+                display: block;
+                text-align: center;
+                width: 50px;
+                height: 50px;
+                background-color: $primary-green;
+                @include border-bottom(4px, $dark-green);
+                transition: background-color .2s ease;
+                line-height: 50px;
+
+                &:hover {
+                    background-color: $dark-green;
+                }
+            }
+
+            &._miss {
+                background-color: $lose-color;
+                @include border-bottom(4px, $dark-red);
+                transition: background-color .2s ease;
+
+                &:hover {
+                    background-color: $dark-red;
+                }
+            }
+    
+            &._giveup {
+                background-color: $dark-grey;
+                @include border-bottom(4px, $darker-grey);
+                transition: background-color .2s ease;
+                
+                &:hover {
+                    background-color: $darker-grey;
+                }
+            }
+
+            &._watch-statistics {
+                align-self: flex-end;
+                background-color: $dark-grey;
+                @include border-bottom(4px, $darker-grey);
+                transition: background-color .2s ease;
+                
+                &:hover {
+                    background-color: $darker-grey;
+                }
+            }
+        }
+    }
+}
+
+table {
+    table-layout: fixed;
+    position: relative;
+    top: 50px;
+}
+
+td {
+    
+    & div {
+        margin: 2px;
+        width: 55px;
+        height: 55px;
+        text-align: center;
+        color: $lose-color;
+        @include font-bold();
+        font-size: 34px;
+        background-color: white;
+        border-radius: 10px;    
+        line-height: 55px;
+        transition: background-color .2s ease;
+        cursor: pointer;
+
+        &:not(._busy):hover {
+            background-color: #fed4d6;
+        }
+    }
+}

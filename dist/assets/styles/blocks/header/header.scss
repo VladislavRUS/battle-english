@@ -1,0 +1,89 @@
+.header {
+    position: relative;
+    padding: 10px 0;
+    box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.3);
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        width: 950px;
+        margin: 0 auto;
+    }
+
+    &__logo {
+        position: relative;
+        left: -6px;
+        top: 4px;
+        max-width: 140px;
+        cursor: pointer;
+        outline: none;
+    }
+
+    &__menu {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+    }
+
+    &__bell {
+        position: relative;
+        top: 3px;
+        margin-right: 33px;
+        max-width: 25px;
+    }
+
+    &__notifications-count {
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: $primary-red;
+        color: white;
+        line-height: 16px;
+        text-align: center;
+        font-size: 12px;
+        @include font-regular();
+    }
+
+    &__user {
+        position: relative;
+        display: flex;
+        align-items: center;
+        @include font-regular();
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+
+        &-avatar {
+            position: relative;
+            top: 2px;
+            margin-right: 11px;
+            max-width: 40px;
+
+            & img {
+                border-radius: 50%;
+            }
+        }
+
+        &-name {
+            margin-right: 30px;
+            color: #424952;
+        }
+
+        &-triangle {
+            position: relative;
+            width: 10px;
+            height: 10px;
+            border-bottom: 2px solid #FAB22C;
+            border-left: 2px solid #FAB22C;
+            transform: rotate(-45deg);
+            transition: transform .2s ease;
+
+            &._opened {
+                transform: rotate(135deg) translate(2px, -3px);
+            }
+        }
+    }
+}

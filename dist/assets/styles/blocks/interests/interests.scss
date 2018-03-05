@@ -1,0 +1,88 @@
+.interests {
+    height: 100%;
+    background-color: $primary-orange;
+
+    &__wrapper {
+        max-width: 950px;
+        margin: 0 auto;
+    }
+
+    &__choose {
+        display: flex;
+        align-items: center;
+        padding-top: 35px;
+        letter-spacing: 0.08em;
+        margin-bottom: 30px;
+
+        &-text {
+            font-size: 28px;
+            color: white;    
+            @include font-bold();
+            margin-right: 35px;
+        }
+
+        &-arrow {
+            position: relative;
+            left: -14px;
+            top: 4px;
+            max-width: 45px;
+        }
+    }
+
+    &__list {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+
+        &-item {
+            position: relative;
+            margin-bottom: 30px;
+            width: calc(100%/6.7);
+            height: 60px;
+            background-color: white;
+            border-radius: 10px;
+            @include border-bottom(6px, $light-grey);
+            text-align: center;
+            line-height: 60px;
+            @include font-regular();
+            color: $gray-font-color;
+            font-size: 16px;
+            cursor: pointer;
+
+            &._selected {
+                color: white;
+                background: $primary-green;
+                @include border-bottom(6px, $dark-green);
+            }
+            
+            &:not(._selected):hover {
+                background: $extra-light-grey;
+            }
+        }
+    }
+
+    &__continue {
+        display: flex;
+        justify-content: center;
+
+        &-text {
+            padding: 15px 45px;
+            @include font-regular();
+            border-radius: 25px;
+            color: white;
+            font-size: 16px;
+            background-color: $lose-color;
+            text-align: center;
+            @include border-bottom(6px, $dark-red);
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color .2s ease;
+            outline: none;
+
+            &:hover {
+                background-color: $dark-red;
+            }
+        }
+    }
+}
