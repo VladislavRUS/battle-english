@@ -7,3 +7,5 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 Project made during 'Oh, my hack' hackathon with @androsovatati
 
 A platform for learning English where players can collaborate, compete and play together
+
+Available on: https://battle-english.herokuapp.com/
