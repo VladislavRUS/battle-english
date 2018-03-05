@@ -44,7 +44,7 @@ const appRoutes: Routes = [
   }
 ];
 
-const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
+const config: SocketIoConfig = { url: '/', options: {} };
 
 @NgModule({
   declarations: [

@@ -2,6 +2,8 @@ const app = require('express')();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
+app.use(express.static('dist'));
+
 const PLAYERS = [];
 const MAX_PLAYERS_NUMBER = 2;
 const GAMES = [];
@@ -168,25 +170,6 @@ function Game(players, idx) {
       player.emit(MESSAGES.NEW_TURN, {
         turn: isPlayerTurn(idx),
       });
-
-      // if (isPlayerTurn(idx)) {
-      //   let left = idx === 0 ? players[0] : players[1];
-      //   let right = idx === 0 ? players[1] : players[0];
-
-      //   player.emit(MESSAGES.NEW_TURN, {
-      //     turn: isPlayerTurn(idx),
-      //   });
-
-      // } else {
-      //   let left = idx === 0 ? players[1] : players[0];
-      //   let right = idx === 0 ? players[0] : players[1];
-
-      //   player.emit(MESSAGES.NEW_TURN, {
-      //     turn: isPlayerTurn(idx),
-      //     left: left,
-      //     right: right
-      //   });
-      // }
     });
 
     startInterval();
