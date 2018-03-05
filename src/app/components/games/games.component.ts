@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class GamesComponent implements OnInit {
 
-  private games: any[];
+  games: any[];
 
   constructor(private router: Router) { }
 
